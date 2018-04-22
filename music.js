@@ -277,7 +277,7 @@ msg.author.send("Commands Music " + `  **
 
 
 
-client.login("NDE5ODU3OTUzNjUxNDI1Mjkw.DbzB0w.JkM4d_-BvqhC21KzluRmtElWMlQ");
+client.login(process.env.BOT_TOKEN);
 
 
 
