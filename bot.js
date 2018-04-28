@@ -59,13 +59,13 @@ client.on('message', async msg => { // eslint-disable-line
 		if (!voiceChannel) return msg.channel.send('**You Shoud Join a Voice Channe**');
 		const permissions = voiceChannel.permissionsFor(msg.client.user);
 		if (!permissions.has('CONNECT')) {
-			return msg.channel.send('**I do not have Permission to join this channel**');
+			return msg.channel.send('**I do not have Permission to join this channel <:xx123:439800927457640448>**');
 		}
 		if (!permissions.has('SPEAK')) {
-			return msg.channel.send('**I do not have Permission to speak this channel**');
+			return msg.channel.send('**I do not have Permission to speak this channel <:xx123:439800927457640448>**');
 		}
 		if (!permissions.has('EMBED_LINKS')) {
-			return msg.channel.sendMessage("**I do not have Permissions `EMBED LINKS`**")
+			return msg.channel.sendMessage("**I do not have Permissions `EMBED LINKS`<:xx123:439800927457640448>**")
 		}
 
 		if (url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)) {
@@ -84,7 +84,7 @@ client.on('message', async msg => { // eslint-disable-line
 					var videos = await youtube.searchVideos(searchString, 5);
 					let index = 0;
 					const embed1 = new Discord.RichEmbed()
-			        .setDescription(`**choose the video number| you only have 20s to choose** :
+			        .setDescription(`**choose the video number| you only have 20s to choose<a:loading:439807730564464659>** :
 ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 					.setFooter("")
 					msg.channel.sendEmbed(embed1).then(message =>{message.delete(20000)})
@@ -98,50 +98,50 @@ ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 						});
 					} catch (err) {
 						console.error(err);
-						return msg.channel.send('**the Time is over**');
+						return msg.channel.send('**the Time is over <:xx123:439800927457640448>**');
 					}
 					const videoIndex = parseInt(response.first().content);
 					var video = await youtube.getVideoByID(videos[videoIndex - 1].id);
 				} catch (err) {
 					console.error(err);
-					return msg.channel.send('**:X: I did"nt find the Search.**');
+					return msg.channel.send('** I did"nt find the Search.<:xx123:439800927457640448>**');
 				}
 			}
 			return handleVideo(video, msg, voiceChannel);
 		}
 	} else if (command === `skip`) {
-		if (!msg.member.voiceChannel) return msg.channel.send('**You are not in a voice channel**!');
-		if (!serverQueue) return msg.channel.send('**There is nothing playing that I could skip for you**.');
-		serverQueue.connection.dispatcher.end('**Skip command has been used**!');
+		if (!msg.member.voiceChannel) return msg.channel.send('**You are not in a voice channel<:xx123:439800927457640448>**!');
+		if (!serverQueue) return msg.channel.send('**There is nothing playing that I could skip for you <:xx123:439800927457640448>**.');
+		serverQueue.connection.dispatcher.end('**Skip command has been used<:checkmark:439800491644289024>**!');
 		return undefined;
 	} else if (command === `stop`) {
-		if (!msg.member.voiceChannel) return msg.channel.send('**You are not in a voice channel!**');
-		if (!serverQueue) return msg.channel.send('**There is nothing playing that I could stop for you**.');
+		if (!msg.member.voiceChannel) return msg.channel.send('**You are not in a voice channel!<:xx123:439800927457640448>**');
+		if (!serverQueue) return msg.channel.send('**There is nothing playing that I could stop for you<:xx123:439800927457640448>**.');
 		serverQueue.songs = [];
-		serverQueue.connection.dispatcher.end('**Stop command has been used!**');
+		serverQueue.connection.dispatcher.end('**Stop command has been used!<:checkmark:439800491644289024>**');
 		return undefined;
 	} else if (command === `volume`) {
-		if (!msg.member.voiceChannel) return msg.channel.send('You are not in a voice channel!');
-		if (!serverQueue) return msg.channel.send('**There is nothing playing.**');
+		if (!msg.member.voiceChannel) return msg.channel.send('You are not in a voice channel!<:xx123:439800927457640448>');
+		if (!serverQueue) return msg.channel.send('**There is nothing playing.<:xx123:439800927457640448>**');
 		if (!args[1]) return msg.channel.send(`:loud_sound: Current volume is **${serverQueue.volume}**`);
 		serverQueue.volume = args[1];
 		serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 5);
 		return msg.channel.send(`:speaker: The Voice Changed to **${args[1]}**`);
 	} else if (command === `np`) {
-		if (!serverQueue) return msg.channel.send('**Nothing now is playing**.');
+		if (!serverQueue) return msg.channel.send('**Nothing now is playing<:xx123:439800927457640448>**.');
 		const embedNP = new Discord.RichEmbed()
-	.setDescription(`:notes: Now Playing: **${serverQueue.songs[0].title}**`)
+	.setDescription(`:notes: Now Playing <a:loading:439807730564464659>: **${serverQueue.songs[0].title}**`)
 		return msg.channel.sendEmbed(embedNP);
 	} else if (command === `queue`) {
 		
-		if (!serverQueue) return msg.channel.send('**There is nothing playing.**');
+		if (!serverQueue) return msg.channel.send('**There is nothing playing.<:xx123:439800927457640448>**');
 		let index = 0;
 		const embedqu = new Discord.RichEmbed()
 	.setDescription(`**Songs Queue**
 
 ${serverQueue.songs.map(song => `**${++index} -** ${song.title}`).join('\n')}
 
-**The Current Audio Playing** ${serverQueue.songs[0].title}`)
+**The Current Audio Playing** <a:blob:439807830586032138>${serverQueue.songs[0].title}`)
 		return msg.channel.sendEmbed(embedqu);
 	} else if (command === `stop`) {
 		if (serverQueue && serverQueue.playing) {
@@ -149,7 +149,7 @@ ${serverQueue.songs.map(song => `**${++index} -** ${song.title}`).join('\n')}
 			serverQueue.connection.dispatcher.pause();
 			return msg.channel.send('**The Audio have Been stoped :pause_button:** ');
 		}
-		return msg.channel.send('**There is nothing playing.**');
+		return msg.channel.send('**There is nothing playing.<:xx123:439800927457640448>**');
 	} else if (command === `resume`) {
 		if (serverQueue && !serverQueue.playing) {
 			serverQueue.playing = true;
@@ -198,7 +198,7 @@ async function handleVideo(video, msg, voiceChannel, playlist = false) {
 		serverQueue.songs.push(song);
 		console.log(serverQueue.songs);
 		if (playlist) return undefined;
-		else return msg.channel.send(` **${song.title}** The Audio Have been Added to the queue!`);
+		else return msg.channel.send(` **${song.title}** The Audio Have been Added to the queue!<:checkmark:439800491644289024>`);
 	}
 	return undefined;
 }
@@ -223,7 +223,7 @@ function play(guild, song) {
 		.on('error', error => console.error(error));
 	dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
 
-	serverQueue.textChannel.send(`Start Playing: **${song.title}**`);
+	serverQueue.textChannel.send(`Start Playing: **${song.title}**<a:loading:439807730564464659>`);
 }
 
 client.on('message', message => {
@@ -251,7 +251,7 @@ if (message.content.startsWith(PREFIX + 'setavatar')) {
 }
 });
 
-let prefix = '.';
+let prefix = '=';
 
 client.on('message', msg => {
 	if (msg.content.startsWith(prefix + 'help')) {
@@ -262,9 +262,9 @@ msg.author.send("Commands Music " + `  **
 :headphones:  ${prefix}skipللإنتقاال الى الاغنيه التاليه (\اذا كان هناك بقائمة الانتظار\
 :headphones:  ${prefix}stop|لأيقاف الموسيقى  
 :headphones:  ${prefix}volume |لتغير حجم الصوت
-:headphones:  ${prefix}np | لإقاف الموسيقى مؤقتا 
+:headphones:  ${prefix}np | لرؤية الموسيقى الشغالة حالياً
 :headphones:  ${prefix}resume |لاعادت تشغيل الاغنية الموجودة
-.invite لدعوة البوت
+=invite لدعوة البوت
 **`);
  }
 });
@@ -287,7 +287,7 @@ client.on('message' , message => {
 
 
 client.on('ready', () => {
-     client.user.setActivity(".help|.invite",{type: 'LISTENING'});
+     client.user.setActivity("=help|=invite",{type: 'LISTENING'});
 
 });
 
@@ -303,6 +303,3 @@ client.on('message', message => {
       message.author.sendEmbed(Embed11)
     }
 });
-
-
-client.login(process.env.BOT_TOKEN);
