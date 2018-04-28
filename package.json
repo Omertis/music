@@ -1,4 +1,5 @@
- "//1": "describes your app and its dependencies",
+{
+  "//1": "describes your app and its dependencies",
   "//2": "https://docs.npmjs.com/files/package.json",
   "//3": "updating this file will download and update your packages",
   "name": "my-glitch-app",
@@ -6,7 +7,7 @@
   "description": "What am I about?",
   "main": "server.js",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "array-sort": "^1.0.0",
@@ -21,6 +22,7 @@
     "node-opus": "^0.2.7",
     "points": "^3.1.0",
     "request": "^2.85.0",
+    "simple-youtube-api": "^5.0.1",
     "table": "^4.0.3",
     "youtube-info": "^1.2.0",
     "ytdl-core": "^0.20.2"
