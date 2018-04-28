@@ -1,4 +1,4 @@
-exports.TOKEN = 'NDE5ODU3OTUzNjUxNDI1Mjkw.DbzB0w.JkM4d_-BvqhC21KzluRmtElWMlQ'; // ya wr3 la tns5
+exports.TOKEN = 'NDM4OTYzOTQ2NDU2NzQzOTM3.DcMQjA.YXRjZFINHPvm27Njoxuk1qNykR8'; // ya wr3 la tns5
 
 exports.PREFIX = '=';
 
