@@ -303,3 +303,8 @@ client.on('message', message => {
       message.author.sendEmbed(Embed11)
     }
 });
+
+
+
+
+client.login(process.env.BOT_TOKEN);
