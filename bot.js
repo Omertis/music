@@ -295,13 +295,14 @@ client.on('ready', () => {
 client.on('message', message => {
     var prefix = "=";
     if (message.content.startsWith(prefix + "mark")) {
-        const embed = new Discord.RichEmbed()
+        message.delete();
+	    const embed = new Discord.RichEmbed()
             .setColor("#34495E")
             .setDescription(`**my servers**🌐 **__${client.guilds.size}__**
 **Users Count**👥 **__${client.users.size}__**
 **channels Count**📚 **__${client.channels.size}__** `)
      .setTimestamp();
-     message.channel.sendEmbed(embed);
+     message.author.sendEmbed(embed);
 
     }
 });
