@@ -293,14 +293,16 @@ client.on('ready', () => {
 
 
 client.on('message', message => {
-   
-    if (message.content.startsWith(prefix +"mark")) {
-        message.delete();
+    var prefix = "=";
+    if (message.content.startsWith(prefix + "mark")) {
+        const embed = new Discord.RichEmbed()
+            .setColor("#34495E")
+            .setDescription(`**my servers**🌐 **__${client.guilds.size}__**
+**Users Count**👥 **__${client.users.size}__**
+**channels Count**📚 **__${client.channels.size}__** `)
+     .setTimestamp();
+     message.channel.sendEmbed(embed);
 
-      const Embed11 = new Discord.RichEmbed()
-                .setAuthor(message.guild.name, message.guild.iconURL)
-        .setDescription(`${client.guilds.size} servers   ${client.users.size} members`)
-      message.author.sendEmbed(Embed11)
     }
 });
 
