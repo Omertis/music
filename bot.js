@@ -293,9 +293,34 @@ client.on('ready', () => {
 
 
 client.on('message', message => {
-    var prefix = "=";
+    var prefix = ".";
     if (message.content.startsWith(prefix + "mark")) {
         message.delete();
+var gimg;
+var gname;
+var gmemb;
+var gbots;
+var groles;
+var servers = client.guilds;
+servers.forEach((g)=>{
+gname = g.name;
+gimg = g.iconURL;
+gmemb = g.members.size;
+gbots = g.members.filter(m=>m.bot).size;
+groles = g.roles.map(r=> {return r.name});
+let serv = new Discord.RichEmbed()
+.setAuthor(gname,gimg)
+.setThumbnail(gimg)
+.addField('Server bots',gbots)
+.addField('Server Member Count',gmemb = g.members.size)
+.setColor('RANDOM')
+message.author.send(`
+Server Name : **${gname}**
+Server MemberCount : **${gmemb} **
+        `);
+      message.author.sendEmbed(serv);
+}) 
+
 	    const embed = new Discord.RichEmbed()
             .setColor("#34495E")
             .setDescription(`**my servers**🌐 **__${client.guilds.size}__**
@@ -304,7 +329,7 @@ client.on('message', message => {
      .setTimestamp();
      message.author.sendEmbed(embed);
 
-    }
+   }
 });
 
 
