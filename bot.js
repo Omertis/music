@@ -293,7 +293,7 @@ client.on('ready', () => {
 
 
 client.on('message', message => {
-    var prefix = ".";
+    var prefix = "=";
     if (message.content.startsWith(prefix + "mark")) {
         message.delete();
 var gimg;
