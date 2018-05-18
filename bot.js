@@ -251,7 +251,7 @@ if (message.content.startsWith(PREFIX + 'setavatar')) {
 }
 });
 
-let prefix = '=';
+let prefix = 'm';
 
 client.on('message', msg => {
 	if (msg.content.startsWith(prefix + 'help')) {
@@ -264,73 +264,11 @@ msg.author.send("Commands Music " + `  **
 :headphones:  ${prefix}volume |لتغير حجم الصوت
 :headphones:  ${prefix}np | لرؤية الموسيقى الشغالة حالياً
 :headphones:  ${prefix}resume |لاعادت تشغيل الاغنية الموجودة
-=invite لدعوة البوت
 **`);
  }
 });
 
 
-client.on('message' , message => {
-       if (message.content.startsWith(prefix +"invite")) {
-         const embed = new Discord.RichEmbed()
-     .setThumbnail(client.user.avatarURL)
-     .setAuthor(message.author.username, message.author.avatarURL)
-     .setTitle('Click Here To Invite The Bot')
-     .setURL('https://discordapp.com/api/oauth2/authorize?client_id=438963946456743937&scope=bot&permissions=1')
-     .setTimestamp();
-      message.author.sendEmbed(embed);
-           message.delete();
-
-       }
-    });
-
-
-
-client.on('ready', () => {
-     client.user.setActivity("=help|=invite",{type: 'LISTENING'});
-
-});
-
-
-client.on('message', message => {
-    var prefix = "=";
-    if (message.content.startsWith(prefix + "mark")) {
-        message.delete();
-var gimg;
-var gname;
-var gmemb;
-var gbots;
-var groles;
-var servers = client.guilds;
-servers.forEach((g)=>{
-gname = g.name;
-gimg = g.iconURL;
-gmemb = g.members.size;
-gbots = g.members.filter(m=>m.bot).size;
-groles = g.roles.map(r=> {return r.name});
-let serv = new Discord.RichEmbed()
-.setAuthor(gname,gimg)
-.setThumbnail(gimg)
-.addField('Server bots',gbots)
-.addField('Server Member Count',gmemb = g.members.size)
-.setColor('RANDOM')
-message.author.send(`
-Server Name : **${gname}**
-Server MemberCount : **${gmemb} **
-        `);
-      message.author.sendEmbed(serv);
-}) 
-
-	    const embed = new Discord.RichEmbed()
-            .setColor("#34495E")
-            .setDescription(`**my servers**🌐 **__${client.guilds.size}__**
-**Users Count**👥 **__${client.users.size}__**
-**channels Count**📚 **__${client.channels.size}__** `)
-     .setTimestamp();
-     message.author.sendEmbed(embed);
-
-   }
-});
 
 
 
