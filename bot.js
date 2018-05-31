@@ -81,7 +81,7 @@ client.on('message', async msg => { // eslint-disable-line
 				var video = await youtube.getVideo(url);
 			} catch (error) {
 				try {
-					var videos = await youtube.searchVideos(searchString, 5);
+					var videos = await youtube.searchVideos(searchString, 10);
 					let index = 0;
 					const embed1 = new Discord.RichEmbed()
 			        .setDescription(`**choose the video number| you only have 20s to choose<a:loading:439807730564464659>** :
@@ -290,7 +290,7 @@ client.on('message', message => {
 })
 
 client.on('ready', () => {
-  client.user.setGame('ليه تطلع موب عاجبك 😐','https://www.twitch.tv/pd13');
+  client.user.setGame('❤ والله احبك ❤','https://www.twitch.tv/pd13');
 });
 
 client.login(process.env.BOT_TOKEN);
